@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI & Workflow Automation - Comprehensive 60-Question Assessment</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- AOS CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-card: #1e293b;
+            --accent-color: #6366f1;
+            --accent-hover: #4f46e5;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        h1, h2, h3, h4, h5, h6, .navbar-brand {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .navbar {
+            background-color: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .quiz-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.3);
+        }
+
+        .btn-custom-primary {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom-primary:hover {
+            background-color: var(--accent-hover);
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .option-label {
+            display: block;
+            background-color: #0f172a;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .option-label:hover {
+            border-color: var(--accent-color);
+            background-color: #162032;
+        }
+
+        input[type="radio"]:checked + span {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .option-label.selected {
+            border-color: var(--accent-color);
+            background-color: rgba(99, 102, 241, 0.1);
+        }
+
+        .timer-badge {
+            font-family: 'Outfit', sans-serif;
+            background: rgba(99, 102, 241, 0.15);
+            color: #818cf8;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-weight: 600;
+        }
+
+        textarea {
+            background-color: #0f172a !important;
+            border: 1px solid var(--border-color) !important;
+            color: white !important;
+        }
+
+        textarea:focus {
+            border-color: var(--accent-color) !important;
+            box-shadow: 0 0 0 0.25rem rgba(99, 102, 241, 0.25) !important;
+        }
+
+        .result-item {
+            border-left: 4px solid #ef4444;
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 0.5rem;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .result-item.correct {
+            border-left-color: #22c55e;
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            background-color: rgba(30, 41, 59, 0.4);
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark py-3">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-4 text-white" href="#">
+                <i class="fa-solid fa-brain me-2" style="color: #818cf8;"></i>AI & Automation <span style="color: #818cf8;">Mastery Assessment</span>
+            </a>
+            <div id="timer-container" class="d-none align-items-center">
+                <div class="timer-badge">
+                    <i class="fa-regular fa-clock me-2"></i>Time Left: <span id="time-display">60:00</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="container my-5 flex-grow-1 d-flex align-items-center justify-content-center">
+        
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="row justify-content-center w-100" data-aos="fade-up">
+            <div class="col-lg-8">
+                <div class="quiz-card p-5 text-center">
+                    <span class="badge px-3 py-2 rounded-pill mb-3" style="background-color: rgba(99, 102, 241, 0.2); color: #818cf8;">Comprehensive Final Examination</span>
+                    <h1 class="display-5 fw-bold mb-3">60-Question Expert Assessment</h1>
+                    <p class="text-muted lead mb-4">Complete coverage of RAG architectures, LLM internals, NLP tokenization, OpenAI Codex, AI versus traditional Server systems, and n8n Workflow Automation nodes.</p>
+                    
+                    <div class="row text-start g-3 mb-4 bg-dark p-3 rounded border border-secondary">
+                        <div class="col-sm-6"><i class="fa-solid fa-circle-check text-success me-2"></i><strong>Total Questions:</strong> 60 Items</div>
+                        <div class="col-sm-6"><i class="fa-solid fa-clock text-warning me-2"></i><strong>Duration:</strong> 60 Minutes</div>
+                        <div class="col-sm-6"><i class="fa-solid fa-arrows-left-right text-info me-2"></i><strong>Navigation:</strong> Fully Bidirectional</div>
+                        <div class="col-sm-6"><i class="fa-solid fa-clipboard-list text-primary me-2"></i><strong>Review:</strong> Detailed Corrections Report</div>
+                    </div>
+
+                    <button onclick="startQuiz()" class="btn btn-custom-primary btn-lg px-5 py-3 fw-semibold w-100">
+                        Start 60-Question Test <i class="fa-solid fa-arrow-right ms-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Interface -->
+        <div id="quiz-screen" class="row justify-content-center w-100 d-none">
+            <div class="col-lg-8" data-aos="fade-in">
+                <div class="quiz-card p-4 p-md-5">
+                    <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom border-secondary">
+                        <span id="question-tracker" class="text-muted fw-medium">Question 1 of 60</span>
+                        <span id="difficulty-badge" class="badge bg-secondary">Easy</span>
+                    </div>
+
+                    <h3 id="question-title" class="h4 mb-4 fw-semibold text-white">Question text...</h3>
+                    <div id="options-container" class="mb-4"></div>
+
+                    <div class="d-flex justify-content-between align-items-center mt-5 pt-3 border-top border-secondary">
+                        <button id="prev-btn" onclick="prevQuestion()" class="btn btn-outline-light px-4" disabled>
+                            <i class="fa-solid fa-arrow-left me-2"></i>Previous
+                        </button>
+                        <button id="next-btn" onclick="nextQuestion()" class="btn btn-custom-primary px-5">
+                            Next <i class="fa-solid fa-arrow-right ms-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="result-screen" class="row justify-content-center w-100 d-none">
+            <div class="col-lg-9" data-aos="fade-up">
+                <div class="quiz-card p-4 p-md-5">
+                    <div class="text-center mb-5">
+                        <div class="display-1 mb-2">🎓</div>
+                        <h2 class="fw-bold">Assessment Submitted!</h2>
+                        <p class="text-muted">Review your score and itemized remediation logs below.</p>
+                        <div class="display-6 fw-bold mt-3" style="color: #818cf8;" id="final-score-display">Score: 0 / 60</div>
+                    </div>
+
+                    <h4 class="mb-4 fw-semibold border-bottom border-secondary pb-2">Comprehensive Correction Logs</h4>
+                    <div id="corrections-container" style="max-height: 500px; overflow-y: auto; padding-right: 10px;"></div>
+
+                    <div class="text-center mt-5">
+                        <button onclick="location.reload()" class="btn btn-custom-primary px-5 py-2">
+                            <i class="fa-solid fa-rotate-right me-2"></i>Retake Assessment
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="text-center py-3 mt-auto">
+        <div class="container">
+            <span>Enterprise Assessment System &bull; 60 Items Configured</span>
+        </div>
+    </footer>
+
+    <!-- JS Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <script>
+        AOS.init();
+
+        // 60 Comprehensive Questions Dataset spanning AI, RAG, LLM, NLP, Codex, Server Architecture, and n8n
+        const questions = [
+            // AI vs Server Architecture (Q1 - Q10)
+            {
+                id: 1, topic: "AI vs Server Architecture", difficulty: "Easy", type: "mcq",
+                question: "What is the primary difference between traditional programming (servers) and machine learning?",
+                options: [
+                    "Traditional programming uses explicit code rules + data; ML discovers rules from data + outputs.",
+                    "Traditional programming requires GPUs exclusively.",
+                    "Machine learning does not involve data processing.",
+                    "There are no differences; both require identical manual scripts."
+                ],
+                correctAnswer: 0,
+                explanation: "Traditional systems execute developer-written rules, whereas ML systems learn mappings from data and labels."
+            },
+            {
+                id: 2, topic: "AI vs Server Architecture", difficulty: "Easy", type: "mcq",
+                question: "Which component handles routing and deterministic state management best in web applications?",
+                options: ["Traditional Web Servers", "Large Language Models", "Vector Databases", "Prompt Templates"],
+                correctAnswer: 0,
+                explanation: "Traditional web servers provide deterministic, reliable execution of hardcoded conditional logic and API routing."
+            },
+            {
+                id: 3, topic: "AI vs Server Architecture", difficulty: "Intermediate", type: "mcq",
+                question: "Why are probabilistic AI models generally harder to debug than standard server error logs?",
+                options: [
+                    "AI models always throw exact HTTP 500 status codes.",
+                    "AI outputs vary given the same input due to temperature and probabilistic sampling.",
+                    "Server codes do not allow stack traces.",
+                    "AI logs are encrypted permanently."
+                ],
+                correctAnswer: 1,
+                explanation: "Probabilistic text generation depends on sampling parameters, making exact behavior replication challenging compared to deterministic code."
+            },
+            {
+                id: 4, topic: "AI vs Server Architecture", difficulty: "Easy", type: "mcq",
+                question: "What does an API gateway typically manage that an LLM cannot handle natively?",
+                options: ["Rate limiting, authentication tokens, and payload routing", "Creative poetry generation", "Zero-shot tokenization", "Vector embedding lookups"],
+                correctAnswer: 0,
+                explanation: "API gateways handle security parameters, traffic orchestration, and request authentication efficiently."
+            },
+            {
+                id: 5, topic: "AI vs Server Architecture", difficulty: "Intermediate", type: "mcq",
+                question: "In hybrid enterprise applications, what role does a traditional server play relative to an AI model?",
+                options: [
+                    "It acts as the secure orchestrator managing database transactions, user permissions, and calling model APIs.",
+                    "It replaces the AI model entirely for natural language tasks.",
+                    "It serves only as a static background wallpaper.",
+                    "It performs real-time weight adjustments."
+                ],
+                correctAnswer: 0,
+                explanation: "Servers orchestrate business workflows, security checks, and safely interface with external AI microservices."
+            },
+            {
+                id: 6, topic: "AI vs Server Architecture", difficulty: "Hard", type: "mcq",
+                question: "What is a major architectural challenge when deploying large neural networks compared to lightweight REST microservices?",
+                options: [
+                    "Massive memory (VRAM) footprint, high latency, and heavy compute overhead.",
+                    "Microservices require physical tape drives.",
+                    "Neural networks cannot connect to databases via JSON.",
+                    "REST services require continuous model retraining."
+                ],
+                correctAnswer: 0,
+                explanation: "Inference pipelines for deep learning models demand high GPU memory and specialized infrastructure scaling."
+            },
+            {
+                id: 7, topic: "AI vs Server Architecture", difficulty: "Easy", type: "definition",
+                question: "Define deterministic execution in server architecture.",
+                correctAnswer: "Deterministic execution means that given a specific input state, the system will always produce the exact same output following rigid code logic."
+            },
+            {
+                id: 8, topic: "AI vs Server Architecture", difficulty: "Intermediate", type: "mcq",
+                question: "How do traditional databases differ from vector databases used in AI stacks?",
+                options: [
+                    "Traditional databases query exact matches (SQL keys), while vector databases query semantic similarity (embeddings).",
+                    "Traditional databases only store images.",
+                    "Vector databases cannot store text attributes.",
+                    "There is no functional distinction."
+                ],
+                correctAnswer: 0,
+                explanation: "Vector DBs index multi-dimensional embeddings to retrieve semantically close content rather than exact string matches."
+            },
+            {
+                id: 9, topic: "AI vs Server Architecture", difficulty: "Hard", type: "mcq",
+                question: "What is model drift in production server-AI pipelines?",
+                options: [
+                    "The gradual degradation of model accuracy over time because real-world production data distributions shift away from training data.",
+                    "Physical movement of rack servers.",
+                    "Network latency spikes between regions.",
+                    "Memory leaks in frontend HTML components."
+                ],
+                correctAnswer: 0,
+                explanation: "Model drift occurs when production input features change over time, rendering historical training assumptions obsolete."
+            },
+            {
+                id: 10, topic: "AI vs Server Architecture", difficulty: "Easy", type: "mcq",
+                question: "Which layer sits between user requests and backend processing in modern cloud stacks?",
+                options: ["Load Balancer / API Gateway", "Vector Index", "Loss Function", "Gradient Descent"],
+                correctAnswer: 0,
+                explanation: "Load balancers and API gateways distribute and secure incoming traffic."
+            },
+
+            // RAG (Retrieval-Augmented Generation) (Q11 - Q20)
+            {
+                id: 11, topic: "RAG Architecture", difficulty: "Easy", type: "mcq",
+                question: "What is the primary purpose of RAG (Retrieval-Augmented Generation)?",
+                options: [
+                    "To ground LLM outputs in verified external knowledge bases and minimize hallucinations.",
+                    "To delete unwanted files from servers automatically.",
+                    "To accelerate CSS rendering speeds.",
+                    "To translate SQL queries into compiled bytecode."
+                ],
+                correctAnswer: 0,
+                explanation: "RAG retrieves relevant external documents and feeds them to the LLM as context to ground responses in facts."
+            },
+            {
+                id: 12, topic: "RAG Architecture", difficulty: "Intermediate", type: "mcq",
+                question: "What role does text chunking play in preparing documents for a RAG vector database?",
+                options: [
+                    "Breaking large documents into smaller semantic segments to fit embedding model limits and improve search precision.",
+                    "Compressing files into ZIP archives.",
+                    "Translating text into machine code.",
+                    "Encrypting sensitive database passwords."
+                ],
+                correctAnswer: 0,
+                explanation: "Chunking splits large texts into manageable blocks so embedding models can index and retrieve specific, highly relevant passages."
+            },
+            {
+                id: 13, topic: "RAG Architecture", difficulty: "Hard", type: "mcq",
+                question: "What is 'semantic chunking' in advanced RAG pipelines?",
+                options: [
+                    "Splitting text based on similarity between embedding vectors of adjacent sentences rather than arbitrary character counts.",
+                    "Randomly splitting text every 100 characters.",
+                    "Translating documents into multiple languages.",
+                    "Deleting duplicate database records."
+                ],
+                correctAnswer: 0,
+                explanation: "Semantic chunking ensures text breaks happen at natural topic shifts by evaluating contextual vector distances."
+            },
+            {
+                id: 14, topic: "RAG Architecture", difficulty: "Easy", type: "mcq",
+                question: "Which database type is standard for storing document chunks and embeddings in RAG?",
+                options: ["Vector Database", "Relational Database (plain SQL)", "Key-Value Cache", "Flat Text File"],
+                correctAnswer: 0,
+                explanation: "Vector databases specialize in high-speed similarity searches over dense vector representations."
+            },
+            {
+                id: 15, topic: "RAG Architecture", difficulty: "Intermediate", type: "mcq",
+                question: "What is an embedding vector?",
+                options: [
+                    "A numerical array representing the semantic meaning of text in multi-dimensional space.",
+                    "A graphical image file format.",
+                    "An error code generated by web servers.",
+                    "A CSS positioning style rule."
+                ],
+                correctAnswer: 0,
+                explanation: "Embeddings map semantic concepts into coordinates where similar meanings are located close together."
+            },
+            {
+                id: 16, topic: "RAG Architecture", difficulty: "Hard", type: "mcq",
+                question: "What is the 'Lost in the Middle' phenomenon in RAG context injection?",
+                options: [
+                    "LLMs tend to pay more attention to information at the very beginning and very end of long contexts, missing crucial details in the middle.",
+                    "Files getting lost in computer file explorers.",
+                    "Network packets dropping between routers.",
+                    "Database connection timeouts."
+                ],
+                correctAnswer: 0,
+                explanation: "Research shows LLM attention mechanisms degrade for information placed deep in the middle of extensive context blocks."
+            },
+            {
+                id: 17, topic: "RAG Architecture", difficulty: "Easy", type: "definition",
+                question: "Define AI Hallucination.",
+                correctAnswer: "An AI hallucination is when an LLM generates confident, factually incorrect, or entirely fabricated information unsupported by its training or input context."
+            },
+            {
+                id: 18, topic: "RAG Architecture", difficulty: "Intermediate", type: "mcq",
+                question: "What is re-ranking in an advanced RAG pipeline?",
+                options: [
+                    "Using a secondary cross-encoder model to re-score and optimize the relevance order of retrieved document chunks before passing them to the LLM.",
+                    "Sorting user names alphabetically.",
+                    "Updating software version numbers.",
+                    "Changing table column structures."
+                ],
+                correctAnswer: 0,
+                explanation: "Re-rankers provide deep contextual scoring on retrieved chunks to ensure the absolute best context enters the prompt."
+            },
+            {
+                id: 19, topic: "RAG Architecture", difficulty: "Hard", type: "mcq",
+                question: "Why might hybrid search (combining keyword BM25 search with vector search) outperform vector search alone in RAG?",
+                options: [
+                    "It captures precise keyword/ID matches (like serial numbers or acronyms) that pure semantic vector search can miss.",
+                    "It uses less electricity.",
+                    "It eliminates all database errors.",
+                    "It automatically generates Python code."
+                ],
+                correctAnswer: 0,
+                explanation: "Keyword search excels at exact lexical matching, whereas vector search handles concepts; combining both maximizes retrieval accuracy."
+            },
+            {
+                id: 20, topic: "RAG Architecture", difficulty: "Easy", type: "mcq",
+                question: "In RAG, what is the role of the generation model?",
+                options: [
+                    "To synthesize a natural language response using the user query and retrieved context chunks.",
+                    "To compile C++ code into machine binaries.",
+                    "To manage server firewall rules.",
+                    "To format HTML stylesheets."
+                ],
+                correctAnswer: 0,
+                explanation: "The generation model reads retrieved context and crafts a coherent, contextual answer for the user."
+            },
+
+            // LLM Internals & NLP (Q21 - Q30)
+            {
+                id: 21, topic: "LLMs & NLP", difficulty: "Easy", type: "mcq",
+                question: "What is a 'Token' in Large Language Models?",
+                options: [
+                    "A sub-word piece of text used as the fundamental unit of processing for the model.",
+                    "A password for logging into servers.",
+                    "A hardware security card.",
+                    "An HTML hyper-link tag."
+                ],
+                correctAnswer: 0,
+                explanation: "Tokens are chunks of text (words or parts of words) processed by tokenizers."
+            },
+            {
+                id: 22, topic: "LLMs & NLP", difficulty: "Intermediate", type: "mcq",
+                question: "What does the 'Context Window' limit define in an LLM?",
+                options: [
+                    "The maximum number of tokens (input + output) the model can process in a single invocation.",
+                    "The physical screen size of the computer monitor.",
+                    "The duration of time a web browser stays open.",
+                    "The storage capacity of the hard drive."
+                ],
+                correctAnswer: 0,
+                explanation: "The context window represents the token threshold capacity for prompt ingestion and response generation."
+            },
+            {
+                id: 23, topic: "LLMs & NLP", difficulty: "Hard", type: "mcq",
+                question: "What is the Transformer attention mechanism ('Self-Attention') primarily designed to do?",
+                options: [
+                    "Calculate dynamic relationships and contextual weights between all words in a sequence simultaneously.",
+                    "Pay attention only to the very first word of a document.",
+                    "Automatically reboot crashed web servers.",
+                    "Manage CSS grid layouts."
+                ],
+                correctAnswer: 0,
+                explanation: "Self-attention weighs the importance of different words relative to each other regardless of their positional distance."
+            },
+            {
+                id: 24, topic: "LLMs & NLP", difficulty: "Easy", type: "mcq",
+                question: "What is 'Temperature' controlling in LLM text generation?",
+                options: [
+                    "The randomness and creativity of the model's token selection.",
+                    "The physical temperature of the server CPU fan.",
+                    "The brightness of the user interface screen.",
+                    "The speed of network download transfers."
+                ],
+                correctAnswer: 0,
+                explanation: "Higher temperature values flatten probability distributions, resulting in more creative and diverse outputs."
+            },
+            {
+                id: 25, topic: "LLMs & NLP", difficulty: "Intermediate", type: "definition",
+                question: "Explain what prompt engineering is.",
+                correctAnswer: "Prompt engineering is the practice of structuring, refining, and designing text inputs and system instructions to guide an LLM to produce accurate, useful outputs."
+            },
+            {
+                id: 26, topic: "LLMs & NLP", difficulty: "Hard", type: "mcq",
+                question: "What is 'Few-Shot Prompting'?",
+                options: [
+                    "Providing a few examples of desired input-output pairs inside the prompt before asking the model to solve a new instance.",
+                    "Firing a weapon at a server rack.",
+                    "Making only a few API requests per day.",
+                    "Using minimal CSS styles."
+                ],
+                correctAnswer: 0,
+                explanation: "Few-shot prompting gives the model pattern demonstrations, substantially improving task performance."
+            },
+            {
+                id: 27, topic: "LLMs & NLP", difficulty: "Easy", type: "mcq",
+                question: "What is tokenization?",
+                options: [
+                    "The process of converting raw text strings into numeric token IDs using a vocabulary tokenizer.",
+                    "Encrypting tokens with military-grade passwords.",
+                    "Converting video files to MP4 format.",
+                    "Printing documents on paper."
+                ],
+                correctAnswer: 0,
+                explanation: "Tokenizers break text strings into token IDs that neural network embedding layers can understand."
+            },
+            {
+                id: 28, topic: "LLMs & NLP", difficulty: "Intermediate", type: "mcq",
+                question: "What is 'Fine-Tuning' an LLM?",
+                options: [
+                    "Training an existing pre-trained model further on a specialized dataset to adapt its style, task performance, or domain expertise.",
+                    "Adjusting the volume on audio speakers.",
+                    "Cleaning dust out of computer fans.",
+                    "Writing CSS media queries."
+                ],
+                correctAnswer: 0,
+                explanation: "Fine-tuning modifies model weights using domain-specific training data."
+            },
+            {
+                id: 29, topic: "LLMs & NLP", difficulty: "Hard", type: "mcq",
+                question: "What is RLHF (Reinforcement Learning from Human Feedback)?",
+                options: [
+                    "A training method using human preference rankings to align LLM behaviors with helpful, honest, and harmless criteria.",
+                    "A robot learning how to play video games without humans.",
+                    "Manually resetting server power buttons.",
+                    "A database indexing technique."
+                ],
+                correctAnswer: 0,
+                explanation: "RLHF fine-tunes LLMs using reward models trained on human feedback to ensure safe and preferred outputs."
+            },
+            {
+                id: 30, topic: "LLMs & NLP", difficulty: "Easy", type: "mcq",
+                question: "What does NLP stand for in computer science?",
+                options: ["Natural Language Processing", "Network Layer Protocol", "Neural Logic Program", "Node Link Processor"],
+                correctAnswer: 0,
+                explanation: "NLP stands for Natural Language Processing, the branch of AI focused on human-computer language interaction."
+            },
+
+            // OpenAI Codex (Q31 - Q40)
+            {
+                id: 31, topic: "OpenAI Codex", difficulty: "Easy", type: "mcq",
+                question: "What was the primary function of OpenAI Codex?",
+                options: [
+                    "Translating natural language text prompts into executable source code across multiple programming languages.",
+                    "Designing 3D video game characters.",
+                    "Managing corporate email servers.",
+                    "Formatting hard drives."
+                ],
+                correctAnswer: 0,
+                explanation: "Codex was built on GPT-3 to understand natural language instructions and synthesize functional code scripts."
+            },
+            {
+                id: 32, topic: "OpenAI Codex", difficulty: "Intermediate", type: "mcq",
+                question: "Which model architecture originally powered OpenAI Codex?",
+                options: ["GPT-3 architecture trained on code and text datasets", "Support Vector Machines", "Convolutional Neural Networks", "Relational Database Engines"],
+                correctAnswer: 0,
+                explanation: "Codex was a descendant of GPT-3 trained extensively on publicly available code repositories."
+            },
+            {
+                id: 33, topic: "OpenAI Codex", difficulty: "Hard", type: "mcq",
+                question: "What foundational capability allowed Codex to handle code autocompletion inside IDE extensions?",
+                options: [
+                    "Its ability to perform fill-in-the-middle (FIM) code generation using prefix and suffix context.",
+                    "Its built-in SQL database engine.",
+                    "Its real-time video streaming encoder.",
+                    "Its hardware graphics rendering engine."
+                ],
+                correctAnswer: 0,
+                explanation: "Fill-in-the-middle training lets models insert code snippets seamlessly between existing code blocks."
+            },
+            {
+                id: 34, topic: "OpenAI Codex", difficulty: "Easy", type: "definition",
+                question: "Define code autocompletion powered by AI.",
+                correctAnswer: "AI code autocompletion is the predictive generation of upcoming lines of code or functions as the developer types, based on surrounding context."
+            },
+            {
+                id: 35, topic: "OpenAI Codex", difficulty: "Intermediate", type: "mcq",
+                question: "What security and reliability risk is associated with AI-generated code from models like Codex?",
+                options: [
+                    "Generated code may contain subtle bugs, security vulnerabilities, or deprecated API usages.",
+                    "It automatically deletes production databases.",
+                    "It requires physical hardware replacement.",
+                    "It cannot be read by human developers."
+                ],
+                correctAnswer: 0,
+                explanation: "AI coding assistants can introduce insecure patterns or logic flaws that require human code review."
+            },
+            {
+                id: 36, topic: "OpenAI Codex", difficulty: "Hard", type: "mcq",
+                question: "How did Codex handle multi-language syntax translation?",
+                options: [
+                    "By leveraging shared semantic token representations learned across Python, JavaScript, TypeScript, Go, and other languages.",
+                    "By running local compiler virtual machines for every language simultaneously.",
+                    "By translating everything into machine binary first.",
+                    "By using static dictionary lookups."
+                ],
+                correctAnswer: 0,
+                explanation: "Multilingual code pre-training enables transfer learning of algorithmic logic across different syntax structures."
+            },
+            {
+                id: 37, topic: "OpenAI Codex", difficulty: "Easy", type: "mcq",
+                question: "Which popular developer tool popularized AI code pairing using models derived from Codex technology?",
+                options: ["GitHub Copilot", "Microsoft Excel", "Adobe Photoshop", "Notepad++"],
+                correctAnswer: 0,
+                explanation: "GitHub Copilot was launched using OpenAI Codex as its underlying AI engine."
+            },
+            {
+                id: 38, topic: "OpenAI Codex", difficulty: "Intermediate", type: "mcq",
+                question: "What is docstring-to-code generation?",
+                options: [
+                    "Writing a descriptive English comment (docstring) and having the AI generate the matching function implementation.",
+                    "Converting audio files into PDF reports.",
+                    "Extracting CSS styles from HTML pages.",
+                    "Backing up database tables."
+                ],
+                correctAnswer: 0,
+                explanation: "Codex excels at turning functional specifications written in natural language comments into working code blocks."
+            },
+            {
+                id: 39, topic: "OpenAI Codex", difficulty: "Hard", type: "mcq",
+                question: "What is zero-shot code generation in coding LLMs?",
+                options: [
+                    "Generating working code for a prompt without having been provided any prior examples of that specific problem.",
+                    "Writing code that contains zero characters.",
+                    "Compiling code without using a CPU.",
+                    "Executing code with zero errors."
+                ],
+                correctAnswer: 0,
+                explanation: "Zero-shot generation tests the model's ability to solve unfamiliar programming challenges from instructions alone."
+            },
+            {
+                id: 40, topic: "OpenAI Codex", difficulty: "Easy", type: "mcq",
+                question: "Can AI coding models explain existing legacy code snippets?",
+                options: [
+                    "Yes, they can analyze source code and output natural language explanations of its logic.",
+                    "No, code models can only write brand new code.",
+                    "Only if the code is written in HTML.",
+                    "Only if connected to a relational database."
+                ],
+                correctAnswer: 0,
+                explanation: "Coding models possess strong code comprehension abilities, allowing them to explain, document, and refactor legacy code."
+            },
+
+            // n8n Workflow Automation (Q41 - Q60)
+            {
+                id: 41, topic: "n8n Automation", difficulty: "Easy", type: "mcq",
+                question: "What core data format is passed dynamically between nodes in n8n workflows?",
+                options: ["JSON (JavaScript Object Notation)", "XML Object Trees", "Raw Binary Streams", "CSV text lines only"],
+                correctAnswer: 0,
+                explanation: "n8n standardizes all node execution data into JSON items flowing through input/output connections."
+            },
+            {
+                id: 42, topic: "n8n Automation", difficulty: "Easy", type: "definition",
+                question: "What is a Workflow Trigger in n8n?",
+                options: [
+                    "A Trigger is the initial node that listens for an event (like a webhook, schedule, or email) to start execution of the workflow."
+                ],
+                correctAnswer: "A Trigger is the starting node that listens for events to initiate workflow execution."
+            },
+            {
+                id: 43, topic: "n8n Automation", difficulty: "Intermediate", type: "mcq",
+                question: "How do you reference data properties from a previous node inside an n8n expression?",
+                options: [
+                    "Using expression syntax like $json.propertyName or $('NodeName').first().json.key",
+                    "Using SQL SELECT statements",
+                    "Using CSS selectors like #property",
+                    "Using print() console functions"
+                ],
+                correctAnswer: 0,
+                explanation: "n8n expressions use dollar-sign syntax ($json or $node) to dynamically reference data items from preceding nodes."
+            },
+            {
+                id: 44, topic: "n8n Automation", difficulty: "Intermediate", type: "mcq",
+                question: "What is the function of the 'If' or 'Switch' node in n8n?",
+                options: [
+                    "To branch workflow execution paths based on conditional rules and data evaluations.",
+                    "To reboot the n8n server container.",
+                    "To encrypt passwords.",
+                    "To generate AI embeddings."
+                ],
+                correctAnswer: 0,
+                explanation: "Conditional nodes split workflows into separate paths depending on whether criteria evaluate to true or false."
+            },
+            {
+                id: 45, topic: "n8n Automation", difficulty: "Hard", type: "mcq",
+                question: "How does n8n handle item lists when executing nodes (Looping / Item Lists)?",
+                options: [
+                    "It automatically loops execution across items in parallel or sequential batches through each connected node.",
+                    "It crashes if there is more than 1 item.",
+                    "It converts all lists into single text strings.",
+                    "It requires manual Python loops for every single action."
+                ],
+                correctAnswer: 0,
+                explanation: "n8n's data model is built around items, allowing automatic iteration through arrays across nodes without manual loops."
+            },
+            {
+                id: 46, topic: "n8n Automation", difficulty: "Easy", type: "mcq",
+                question: "What is a Webhook node used for in n8n?",
+                options: [
+                    "Receiving HTTP requests from external web services to trigger workflows instantly.",
+                    "Sending physical mail letters.",
+                    "Formatting CSS stylesheets.",
+                    "Compiling C++ programs."
+                ],
+                correctAnswer: 0,
+                explanation: "Webhook nodes expose an HTTP endpoint that triggers workflows when external apps send data payloads."
+            },
+            {
+                id: 47, topic: "n8n Automation", difficulty: "Intermediate", type: "mcq",
+                question: "What is the purpose of the 'Code Node' (JavaScript / Python) inside n8n?",
+                options: [
+                    "To write custom code scripts for advanced data transformations, custom logic, or complex payload restructuring.",
+                    "To design user interface buttons.",
+                    "To manage database backups.",
+                    "To render 3D graphics."
+                ],
+                correctAnswer: 0,
+                explanation: "The Code node lets developers execute custom JavaScript or Python directly within the automation pipeline."
+            },
+            {
+                id: 48, topic: "n8n Automation", difficulty: "Hard", type: "mcq",
+                question: "What is error handling in n8n workflows?",
+                options: [
+                    "Using Error Trigger nodes and sub-workflows to catch failures, send alerts, or execute fallback logic when a node errors out.",
+                    "Ignoring errors permanently.",
+                    "Restarting the computer hardware.",
+                    "Deleting the workflow file."
+                ],
+                correctAnswer: 0,
+                explanation: "n8n allows dedicated error workflow routing to handle failures gracefully in production automation."
+            },
+            {
+                id: 49, topic: "n8n Automation", difficulty: "Easy", type: "mcq",
+                question: "Can n8n integrate with AI models like OpenAI or LangChain vector stores?",
+                options: [
+                    "Yes, n8n provides dedicated AI and Advanced AI nodes to build RAG pipelines, agents, and LLM chains.",
+                    "No, n8n only works with local text files.",
+                    "Only via manual hardware wiring.",
+                    "Only if using PHP scripts."
+                ],
+                correctAnswer: 0,
+                explanation: "n8n features robust Advanced AI nodes for chaining LLMs, memory stores, and vector databases visually."
+            },
+            {
+                id: 50, topic: "n8n Automation", difficulty: "Intermediate", type: "mcq",
+                question: "What is the purpose of the 'Set' (Edit Fields) node in n8n?",
+                options: [
+                    "To add, modify, or remove properties and values from the JSON data items flowing through the workflow.",
+                    "To set screen brightness.",
+                    "To configure printer settings.",
+                    "To write operating system patches."
+                ],
+                correctAnswer: 0,
+                explanation: "The Edit Fields (Set) node is used to shape, rename, and add properties to data payloads."
+            },
+            {
+                id: 51, topic: "n8n Automation", difficulty: "Hard", type: "mcq",
+                question: "What is the difference between n8n Cloud (SaaS) and Self-Hosted n8n?",
+                options: [
+                    "Self-hosted runs on your own infrastructure (Docker/Kubernetes) with full data privacy, while Cloud is managed by n8n.",
+                    "Self-hosted cannot run workflows.",
+                    "Cloud does not support JSON.",
+                    "There are no operational differences."
+                ],
+                correctAnswer: 0,
+                explanation: "Self-hosting gives users complete data control and local network access, while cloud provides managed maintenance."
+            },
+            {
+                id: 52, topic: "n8n Automation", difficulty: "Easy", type: "mcq",
+                question: "What does an HTTP Request node do in n8n?",
+                options: [
+                    "Makes custom GET, POST, PUT, or DELETE API calls to any external web service or REST API.",
+                    "Sends SMS text messages via satellite.",
+                    "Changes local folder icons.",
+                    "Updates computer time zones."
+                ],
+                correctAnswer: 0,
+                explanation: "The HTTP Request node is a universal connector for any service with a REST API."
+            },
+            {
+                id: 53, topic: "n8n Automation", difficulty: "Intermediate", type: "definition",
+                question: "Define workflow automation in the context of tools like n8n.",
+                correctAnswer: "Workflow automation is the automated movement and processing of data between multiple applications and services using visual triggers and action nodes."
+            },
+            {
+                id: 54, topic: "n8n Automation", difficulty: "Hard", type: "mcq",
+                question: "How does n8n manage credentials securely across workflows?",
+                options: [
+                    "By encrypting credentials in its database and injecting them securely into node API calls without exposing plain text keys.",
+                    "By storing them as plain text in the URL bar.",
+                    "By printing them on user invoices.",
+                    "By emailing them to administrators."
+                ],
+                correctAnswer: 0,
+                explanation: "n8n stores credentials encrypted securely, keeping API keys hidden from workflow viewing screens."
+            },
+            {
+                id: 55, topic: "n8n Automation", difficulty: "Easy", type: "mcq",
+                question: "What is a scheduled trigger (Cron node) used for in n8n?",
+                options: [
+                    "Running workflows automatically at specified time intervals, dates, or cron schedules.",
+                    "Triggering workflows only when a user clicks a button.",
+                    "Stopping workflows permanently.",
+                    "Measuring internet speed."
+                ],
+                correctAnswer: 0,
+                explanation: "The Schedule Trigger runs workflows on time-based intervals (e.g., every hour or every Monday at 9 AM)."
+            },
+            {
+                id: 56, topic: "n8n Automation", difficulty: "Intermediate", type: "mcq",
+                question: "What is data mapping in n8n node configuration?",
+                options: [
+                    "Dragging or assigning data fields from previous node outputs into the input parameters of current nodes.",
+                    "Drawing physical maps of server rooms.",
+                    "Converting geographic GPS coordinates into street addresses.",
+                    "Creating database relationship diagrams."
+                ],
+                correctAnswer: 0,
+                explanation: "Data mapping links output variables from prior nodes into downstream node fields."
+            },
+            {
+                id: 57, topic: "n8n Automation", difficulty: "Hard", type: "mcq",
+                question: "How do sub-workflows function in n8n?",
+                options: [
+                    "A main workflow can call a separate modular workflow via an 'Execute Workflow' node, passing data and receiving results back.",
+                    "Sub-workflows run inside web browsers.",
+                    "They are backup files stored on USB drives.",
+                    "They execute independently without data sharing."
+                ],
+                correctAnswer: 0,
+                explanation: "Sub-workflows modularize complex logic so common automation routines can be reused across multiple parent workflows."
+            },
+            {
+                id: 58, topic: "n8n Automation", difficulty: "Easy", type: "mcq",
+                question: "What is the execution history log in n8n used for?",
+                options: [
+                    "Inspecting past workflow runs, viewing data payloads passed through each node, and debugging execution errors.",
+                    "Playing video game replays.",
+                    "Deleting user accounts.",
+                    "Changing application themes."
+                ],
+                correctAnswer: 0,
+                explanation: "Execution history logs track every run, showing input/output JSON data per node for troubleshooting."
+            },
+            {
+                id: 59, topic: "n8n Automation", difficulty: "Intermediate", type: "mcq",
+                question: "What is a Merge node used for in n8n?",
+                options: [
+                    "Combining data streams from two different branches of a workflow into a single unified dataset.",
+                    "Merging two computer screens into one monitor.",
+                    "Deleting duplicate database tables.",
+                    "Compressing video files."
+                ],
+                correctAnswer: 0,
+                explanation: "The Merge node joins data from separate branches using methods like Append, Combine, or Multiplex."
+            },
+            {
+                id: 60, topic: "n8n Automation", difficulty: "Hard", type: "mcq",
+                question: "What is the advantage of using n8n's Advanced AI Agent node compared to a basic LLM node?",
+                options: [
+                    "It equips the LLM with tools (like web search, database queries, and calculators) allowing it to autonomously reason and execute multi-step tasks.",
+                    "It makes the LLM run faster on local CPUs.",
+                    "It removes the need for JSON formatting.",
+                    "It eliminates all API costs."
+                ],
+                correctAnswer: 0,
+                explanation: "AI Agent nodes give language models tool-calling capabilities to autonomously solve complex multi-step workflows."
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let userAnswers = {};
+        let timerInterval;
+        let timeLeft = 3600; // 60 minutes in seconds
+
+        function startQuiz() {
+            document.getElementById('welcome-screen').classList.add('d-none');
+            document.getElementById('quiz-screen').classList.remove('d-none');
+            document.getElementById('timer-container').classList.remove('d-none');
+            startTimer();
+            loadQuestion();
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    submitQuiz();
+                    return;
+                }
+                timeLeft--;
+                let minutes = Math.floor(timeLeft / 60);
+                let seconds = timeLeft % 60;
+                document.getElementById('time-display').textContent = 
+                    `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        function loadQuestion() {
+            const q = questions[currentQuestionIndex];
+            document.getElementById('question-tracker').textContent = `Question ${currentQuestionIndex + 1} of ${questions.length} (${q.topic})`;
+            document.getElementById('difficulty-badge').textContent = q.difficulty;
+            
+            const badge = document.getElementById('difficulty-badge');
+            if(q.difficulty === 'Easy') badge.className = "badge bg-success";
+            else if(q.difficulty === 'Intermediate') badge.className = "badge bg-warning text-dark";
+            else badge.className = "badge bg-danger";
+
+            document.getElementById('question-title').textContent = q.question;
+
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+
+            if (q.type === 'mcq') {
+                q.options.forEach((opt, idx) => {
+                    const isChecked = userAnswers[currentQuestionIndex] === idx ? 'checked' : '';
+                    const isSelectedClass = userAnswers[currentQuestionIndex] === idx ? 'selected' : '';
+                    optionsContainer.innerHTML += `
+                        <label class="option-label ${isSelectedClass}" onclick="selectMCQ(${idx})">
+                            <div class="form-check mb-0">
+                                <input class="form-check-input" type="radio" name="quiz-option" id="opt${idx}" value="${idx}" ${isChecked}>
+                                <span class="form-check-label text-white ms-2">${opt}</span>
+                            </div>
+                        </label>
+                    `;
+                });
+            } else if (q.type === 'definition') {
+                const savedVal = userAnswers[currentQuestionIndex] || '';
+                optionsContainer.innerHTML += `
+                    <div class="mb-3">
+                        <label class="form-label text-muted">Provide your concise definition/answer below:</label>
+                        <textarea class="form-control" rows="4" placeholder="Type your answer here..." oninput="saveDefinition(this.value)">${savedVal}</textarea>
+                    </div>
+                `;
+            }
+
+            document.getElementById('prev-btn').disabled = currentQuestionIndex === 0;
+            const nextBtn = document.getElementById('next-btn');
+            if (currentQuestionIndex === questions.length - 1) {
+                nextBtn.innerHTML = 'Submit Assessment <i class="fa-solid fa-check ms-2"></i>';
+                nextBtn.className = 'btn btn-success px-5';
+            } else {
+                nextBtn.innerHTML = 'Next <i class="fa-solid fa-arrow-right ms-2"></i>';
+                nextBtn.className = 'btn btn-custom-primary px-5';
+            }
+        }
+
+        function selectMCQ(idx) {
+            userAnswers[currentQuestionIndex] = idx;
+            document.querySelectorAll('.option-label').forEach((lbl, i) => {
+                if (i === idx) {
+                    lbl.classList.add('selected');
+                    lbl.querySelector('input').checked = true;
+                } else {
+                    lbl.classList.remove('selected');
+                }
+            });
+        }
+
+        function saveDefinition(val) {
+            userAnswers[currentQuestionIndex] = val;
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                submitQuiz();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        }
+
+        function submitQuiz() {
+            clearInterval(timerInterval);
+            document.getElementById('quiz-screen').classList.add('d-none');
+            document.getElementById('timer-container').classList.add('d-none');
+            document.getElementById('result-screen').classList.remove('d-none');
+
+            let score = 0;
+            let correctionsHTML = '';
+
+            questions.forEach((q, index) => {
+                let userAns = userAnswers[index];
+                let isCorrect = false;
+
+                if (q.type === 'mcq') {
+                    if (userAns === q.correctAnswer) {
+                        score++;
+                        isCorrect = true;
+                    }
+                } else if (q.type === 'definition') {
+                    if (userAns && userAns.trim().length > 3) {
+                        score++;
+                        isCorrect = true;
+                    }
+                }
+
+                let userResponseText = q.type === 'mcq' ? 
+                    (userAns !== undefined ? q.options[userAns] : 'No answer provided') : 
+                    (userAns || 'No answer provided');
+
+                let correctResponseText = q.type === 'mcq' ? q.options[q.correctAnswer] : q.correctAnswer;
+
+                correctionsHTML += `
+                    <div class="result-item ${isCorrect ? 'correct' : ''}">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="mb-0 text-white fs-6">Q${index + 1}: ${q.question}</h5>
+                            <span class="badge ${isCorrect ? 'bg-success' : 'bg-danger'}">${isCorrect ? 'Correct' : 'Incorrect'}</span>
+                        </div>
+                        <p class="mb-1 text-muted small"><strong>Topic:</strong> ${q.topic} | <strong>Tier:</strong> ${q.difficulty}</p>
+                        <p class="mb-1 small"><strong>Your Answer:</strong> <span class="${isCorrect ? 'text-success' : 'text-danger'}">${userResponseText}</span></p>
+                        ${!isCorrect ? `<p class="mb-1 small"><strong>Correct Answer:</strong> <span class="text-success">${correctResponseText}</span></p>` : ''}
+                        <div class="mt-2 p-2 bg-dark rounded border border-secondary text-light small">
+                            <i class="fa-solid fa-circle-info text-info me-1"></i><strong>Explanation:</strong> ${q.explanation}
+                        </div>
+                    </div>
+                `;
+            });
+
+            document.getElementById('final-score-display').textContent = `Score: ${score} / ${questions.length}`;
+            document.getElementById('corrections-container').innerHTML = correctionsHTML;
+        }
+    </script>
+</body>
+</html>
